@@ -30,7 +30,7 @@ export class TodoListComponent implements OnInit {
       searchCategory = searchCategory.toLocaleLowerCase();
 
       this.filteredTodos = this.filteredTodos.filter(todo => {
-        return !searchCategory || todo.category.toLowerCase().indexOf(searchCategory) !== -1;
+        return !searchCategory || todo.category.toLocaleLowerCase().indexOf(searchCategory) !== -1;
       });
     }
 
