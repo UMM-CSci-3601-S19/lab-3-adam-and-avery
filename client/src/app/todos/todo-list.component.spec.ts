@@ -93,3 +93,41 @@ describe('Todo list', () => {
       .subscribe(x => expect(todoList.filteredTodos.length).toBe(2));
   });
 });
+
+describe('Misbehaving todo list', () => {
+  let todoList: TodoListComponent;
+  let fixture: ComponentFixture<TodoListComponent>;
+
+  let todoListServiceStub: {
+    getTodos: () => Observable<Todo[]>
+  };
+
+  beforeEach( () => {
+    // stub TodoService for test purposes
+    todoListServiceStub = {
+      getTodos: () => Observable.create(observer => {
+        observer.error('Error-prone observable');
+      })
+    };
+
+    TestBed.configureTestingModule({
+      imports: [FormsModule, CustomModule],
+      declarations: [TodoListComponent],
+      providers: [{provide: TodoListService, useValue: todoListServiceStub},
+        {provide: MATERIAL_COMPATIBILITY_MODE, useValue: true}]
+    });
+  });
+
+  beforeEach(async(() => {
+    TestBed.compileComponents().then(() => {
+      fixture = TestBed.createComponent(TodoListComponent);
+      todoList = fixture.componentInstance;
+      fixture.detectChanges();
+    });
+  }));
+
+  it('generates an error if we don\'t set up a TodoListService', () => {
+    // Since the observer throws an error, we don't expect todos to be defined.
+    expect(todoList.todos).toBeUndefined();
+  })
+});
