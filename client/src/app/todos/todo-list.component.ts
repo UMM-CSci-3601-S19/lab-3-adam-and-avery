@@ -46,7 +46,7 @@ export class TodoListComponent implements OnInit {
       });
     }
 
-    // // Filter by Status
+    // Filter by Status
     if (searchStatus != null) {
       searchStatus = searchStatus.toLocaleLowerCase();
 
@@ -55,7 +55,7 @@ export class TodoListComponent implements OnInit {
       });
     }
 
-    // // Filter by Owner
+    // Filter by Owner
     if (searchOwner != null) {
       searchOwner = searchOwner.toLocaleLowerCase();
 
