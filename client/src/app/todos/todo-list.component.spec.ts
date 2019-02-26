@@ -92,6 +92,22 @@ describe('Todo list', () => {
     a.do(x => Observable.of(x))
       .subscribe(x => expect(todoList.filteredTodos.length).toBe(2));
   });
+
+  it('todo list filters by one body text type exact', () => {
+    expect(todoList.filteredTodos.length).toBe(3);
+    todoList.todoBody = 'This is Celia\'s todo';
+    const a: Observable<Todo[]> = todoList.refreshTodos();
+    a.do(x => Observable.of(x))
+      .subscribe(x => expect(todoList.filteredTodos.length).toBe(1));
+  });
+
+  it('todo list filters by body all of them', () => {
+    expect(todoList.filteredTodos.length).toBe(3);
+    todoList.todoBody = 'This is';
+    const a: Observable<Todo[]> = todoList.refreshTodos();
+    a.do(x => Observable.of(x))
+      .subscribe(x => expect(todoList.filteredTodos.length).toBe(3));
+  });
 });
 
 describe('Misbehaving todo list', () => {
