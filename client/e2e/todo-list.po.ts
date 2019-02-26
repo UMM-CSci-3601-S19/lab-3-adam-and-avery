@@ -33,19 +33,19 @@ export class TodoPage {
   }
 
   typeABody(name: string) {
-    let input = element(by.id('todoCategory'));
+    let input = element(by.id('todoBody'));
     input.click();
     input.sendKeys(name);
   }
 
   typeAStatus(name: string) {
-    let input = element(by.id('todoCategory'));
+    let input = element(by.id('todoStatus'));
     input.click();
     input.sendKeys(name);
   }
 
   typeAnOwner(name: string) {
-    let input = element(by.id('todoCategory'));
+    let input = element(by.id('todoOwner'));
     input.click();
     input.sendKeys(name);
   }
