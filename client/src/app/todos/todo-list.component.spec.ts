@@ -124,6 +124,22 @@ describe('Todo list', () => {
     a.do(x => Observable.of(x))
       .subscribe(x => expect(todoList.filteredTodos.length).toBe(2));
   })
+
+  it('todo list filters by specific owner', () => {
+    expect(todoList.filteredTodos.length).toBe(3);
+    todoList.todoOwner = 'Celia';
+    const a: Observable<Todo[]> = todoList.refreshTodos();
+    a.do(x => Observable.of(x))
+      .subscribe(x => expect(todoList.filteredTodos.length).toBe(1));
+  })
+
+  it('todo list filters by specific character in owner', () => {
+    expect(todoList.filteredTodos.length).toBe(3);
+    todoList.todoOwner = 'a';
+    const a: Observable<Todo[]> = todoList.refreshTodos();
+    a.do(x => Observable.of(x))
+      .subscribe(x => expect(todoList.filteredTodos.length).toBe(2));
+  })
 });
 
 describe('Misbehaving todo list', () => {
