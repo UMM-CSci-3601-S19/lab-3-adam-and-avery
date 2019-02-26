@@ -50,6 +50,13 @@ export class TodoPage {
     input.sendKeys(name);
   }
 
+  getUniqueTodo(id:string) {
+    let todo = element(by.id(id)).getText();
+    this.highlightElement(by.id(id));
+
+    return todo;
+  }
+
   backspace(){
       browser.actions().sendKeys(Key.BACK_SPACE).perform();
   }
