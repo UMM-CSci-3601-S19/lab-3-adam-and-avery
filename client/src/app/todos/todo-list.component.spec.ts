@@ -108,6 +108,22 @@ describe('Todo list', () => {
     a.do(x => Observable.of(x))
       .subscribe(x => expect(todoList.filteredTodos.length).toBe(3));
   });
+
+  it('todo list filters by the status of true', () => {
+    expect(todoList.filteredTodos.length).toBe(3);
+    todoList.todoStatus = 'true';
+    const a: Observable<Todo[]> = todoList.refreshTodos();
+    a.do(x => Observable.of(x))
+      .subscribe(x => expect(todoList.filteredTodos.length).toBe(1));
+  });
+
+  it('todo list filters by the status of false', () => {
+    expect(todoList.filteredTodos.length).toBe(3);
+    todoList.todoStatus = 'false';
+    const a: Observable<Todo[]> = todoList.refreshTodos();
+    a.do(x => Observable.of(x))
+      .subscribe(x => expect(todoList.filteredTodos.length).toBe(2));
+  })
 });
 
 describe('Misbehaving todo list', () => {
