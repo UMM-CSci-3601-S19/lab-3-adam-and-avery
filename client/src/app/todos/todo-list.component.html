@@ -18,7 +18,7 @@
         </mat-form-field>
 
         <mat-accordion *ngIf="todos; else todosError">
-          <mat-expansion-panel #elem *ngFor="let todo of this.filterTodos(todoCategory, todoBody, todoStatus, todoOwner)">
+          <mat-expansion-panel #elem [id]="todo._id" *ngFor="let todo of this.filterTodos(todoCategory, todoBody, todoStatus, todoOwner)">
 
             <mat-expansion-panel-header>
               <mat-panel-title>{{todo.body}}</mat-panel-title>
@@ -27,7 +27,7 @@
             <mat-panel-description>Owned by {{todo.owner}}</mat-panel-description>
             <mat-panel-description>Category: {{todo.category}}</mat-panel-description>
             <mat-panel-description>Status: {{todo.status}}</mat-panel-description>
-            <mat-panel-description>Todo id: {{todo.id}}</mat-panel-description>
+            <mat-panel-description>Todo id: {{todo._id}}</mat-panel-description>
           </mat-expansion-panel>
 
         </mat-accordion>

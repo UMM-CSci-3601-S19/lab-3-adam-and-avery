@@ -26,21 +26,21 @@ describe('Todo list', () => {
     todoListServiceStub = {
       getTodos: () => Observable.of([
         {
-          id: 'todo1_id',
+          _id: 'todo1_id',
           owner: 'Amy',
           status: false,
           body: 'This is Amy\'s todo',
           category: 'software design'
         },
         {
-          id: 'todo2_id',
+          _id: 'todo2_id',
           owner: 'Bob',
           status: true,
           body: 'This is Bob\'s todo',
           category: 'groceries'
         },
         {
-          id: 'todo3_id',
+          _id: 'todo3_id',
           owner: 'Celia',
           status: false,
           body: 'This is Celia\'s todo',
