@@ -53,4 +53,11 @@ describe('Todo list', () => {
       expect(page.getUniqueTodo("58895985a22c04e761776d54")).toEqual("In sunt ex non tempor cillum commodo amet incididunt anim qui commodo quis. Cillum non labore ex sint esse.");
     });
 
+  it('should type something in owner and status filter boxes and check that it returned correct element', () => {
+    page.navigateTo();
+    page.typeAnOwner("Blanche");
+    page.typeAStatus("false");
+    expect(page.getUniqueTodo("58895985a22c04e761776d54")).toEqual("In sunt ex non tempor cillum commodo amet incididunt anim qui commodo quis. Cillum non labore ex sint esse.");
+  });
+
 });
